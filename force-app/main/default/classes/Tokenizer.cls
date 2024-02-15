@@ -1,6 +1,6 @@
 public with sharing class Tokenizer {
 
-    private static final DescribeSObjectResult DESCRIBE = AppError__c.SObjectType.getDescribe(SObjectDescribeOptions.DEFERRED);
+    private static final DescribeSObjectResult DESCRIBE = OrgError__c.SObjectType.getDescribe(SObjectDescribeOptions.DEFERRED);
 
     private Pattern regex;
     private List<SObjectField> fields = new List<SObjectField>();
@@ -24,7 +24,7 @@ public with sharing class Tokenizer {
 
     // PUBLIC
 
-    public void execute(AppError__c error) {
+    public void execute(OrgError__c error) {
         Matcher match = regex.matcher( error.txl_FullMailBody__c );
 
         if(match.find()) {

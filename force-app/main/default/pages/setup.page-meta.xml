@@ -4,9 +4,4 @@
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
     <label>Setup</label>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>20</minorNumber>
-        <namespace>sfLma</namespace>
-    </packageVersions>
 </ApexPage>

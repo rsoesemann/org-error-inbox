@@ -28,7 +28,7 @@ public with sharing class SetupEmailService extends SetupStep {
         if(isActive) {
             String address = service.LocalPart + '@' + service.EmailDomainName;
             String link = '<em><a href="/lightning/setup/EmailToApexFunction/page?address=%2Femail-admin%2Fservices%2FdetailEmailServicesAddress.apexp%3Fid%3D' + service.Id + '">' + address + '</a></em>';
-            String message = String.format('An Email Service is set up to receive error emails. Configure your Managed Packages to send errors to: {0}.<br/><br/>' +
+            String message = String.format('An Email Service is set up to receive error emails. Configure your Org to send errors to: {0}.<br/><br/>' +
                                            '{1} for {2} Email Tokenizers is available.',
                              new List<String>{ link, setupLink('m00', 'CustomMetadata', 'Custom Metadata'), ''+ tokenizers.size()});
             return new ApexPages.Message(ApexPages.Severity.CONFIRM, message);

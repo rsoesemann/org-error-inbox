@@ -1,15 +1,11 @@
-# Salesforce ISV Cockpit 
+# Salesforce Org Error Inbox
 
-The ISV Cockpit is a native Salesforce App that extends the Salesforce LMA in your Partner Business Org (PBO) and helps you monitor the health of your apps and proactively support your subscribers in error cases.
+The Org Error Inbox is a native Salesforce App that receives your orgs error emails. It organizes them, notifies you and helps you solve the underlying issues.
 
 **Features:**
 
-- Auto-Links Errors to **Licence Management App** (=LMA) objects (Accounts, Packages, Versions, Licences)
 - **Custom Metadata** Tokenizer for flexible Email Parsing
-- Understand your Apps help with **Reports and Dashboards**
-- Notify **Slack** Channel on Errors
-- Archive and Restore Errors using **Big Object**
-- Fetches and reports on **App Analytics** Summary data
+- Notify **Slack** Channel when email is received
 - [Explain errors and fixes using **OpenAI API** integration](https://youtu.be/dERb_22VSfI)
 
 ## TL;DR - Click for Video Demo!
@@ -18,14 +14,12 @@ The ISV Cockpit is a native Salesforce App that extends the Salesforce LMA in yo
 
 ## How does it work?
 
-Managed Packages have an option to send out app errors to an email address defined during Package upload. We use this mechanism and let our App receive and parse those emails. In combination with the information in the LMA app, we can perfectly assign each incoming error to a customer account, a package, package version, and license. But we can do more. We also extract information about the type of error and where it occurred.
+Salesforce orgs send out unhandled errors to the main admin's email address. If you redirect such email to this apps email service, it will receive and parse them into a Custom Object OrgError__c. 
 
 All this information is stored in a single Custom Object and can be easily used for reporting and sophisticated support workflows.
 
-## How can I use and extends this?
+## How can I use and extend this?
 
-The project was built as a flexible unnamespaced SFDX project. The repo contains all the scripts to automatically build dev scratch orgs with the LMA installed and sample data to play with.
-
-From there you can either build Unlocked Packages from it or even push it into a Packaging org using the deployMetadata.sh script.
+The project was built as a flexible unnamespaced SFDX project. The repo contains all the scripts to automatically build dev scratch orgs and sample data to play with.
 
 Feel free to fork the repo and extend it. We would love to get improvements as Pull Request from you. Or create issues when you find a problem but don't want to fix it on your own.

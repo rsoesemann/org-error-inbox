@@ -16,6 +16,6 @@ private class ErrorMailReceiver_Test {
 
 
         // Verify
-        System.assertEquals(mail.plainTextBody , [SELECT txl_FullMailBody__c FROM AppError__c LIMIT 1].txl_FullMailBody__c);
+        System.assertEquals(mail.plainTextBody , [SELECT txl_FullMailBody__c FROM OrgError__c LIMIT 1].txl_FullMailBody__c);
     }
 }

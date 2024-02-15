@@ -9,9 +9,9 @@ private class SetupReparse_Test {
         // Setup
         setup();
 
-        Triggers.skips.add(ParseAppErrors.class);
-        insert new AppError__c(txl_FullMailBody__c = mails[6]);
-        Triggers.skips.remove(ParseAppErrors.class);
+        Triggers.skips.add(ParseOrgErrors.class);
+        insert new OrgError__c(txl_FullMailBody__c = mails[6]);
+        Triggers.skips.remove(ParseOrgErrors.class);
 
         SetupReparse step = new SetupReparse();
         System.assertEquals(ApexPages.Severity.WARNING, step.getStatus().getSeverity());
@@ -31,13 +31,6 @@ private class SetupReparse_Test {
     // HELPER
 
     private static void setup() {
-        Account_t a = new Account_t();
-        LmaPackage p = new LmaPackage().name('App A').ns('NSA');
-        LmaVersion v = new LmaVersion(p).name('v1');
-        new LmaLicense(a, v)
-                .org('00D000000000001')
-                .persist();
-
         StaticResource resource = [SELECT Body FROM StaticResource WHERE Name = 'error_mails_txt'];
         mails = resource.Body.toString().split('&');
     }

@@ -4,10 +4,10 @@ public with sharing class AddErrorInsights {
 
     @InvocableMethod(label = 'Add Error Insights from OpenAI')
     public static void execute(List<Id> errorIds) {
-        List<AppError__c> errors = [SELECT txl_FullMailBody__c FROM AppError__c 
+        List<OrgError__c> errors = [SELECT txl_FullMailBody__c FROM OrgError__c 
                                     WHERE Id IN :errorIds WITH SYSTEM_MODE];
 
-        for(AppError__c error : errors) {
+        for(OrgError__c error : errors) {
             error.txl_Hints__c = execute(error);
         }
 
@@ -17,7 +17,7 @@ public with sharing class AddErrorInsights {
 
     // PRIVATE
 
-    private static String execute(AppError__c error) {
+    private static String execute(OrgError__c error) {
         HttpResponse result = null;
 
         try {
@@ -35,7 +35,7 @@ public with sharing class AddErrorInsights {
     }
 
 
-    private static HttpRequest openAiRequestFor(AppError__c error) {
+    private static HttpRequest openAiRequestFor(OrgError__c error) {
         HttpRequest result = new HttpRequest();
         result.setEndpoint('https://api.openai.com/v1/chat/completions');
         result.setMethod('POST');
@@ -46,7 +46,7 @@ public with sharing class AddErrorInsights {
                                 .model('gpt-4')
                                 .message(new OpenAiCompletions.Message()
                                                 .role('system')
-                                                .content('You are an experienced Salesforce Developer of a Managed Package.'))
+                                                .content('You are an experienced Salesforce Developer of a large Customer Org.'))
                                 .message(new OpenAiCompletions.Message()
                                                 .role('user')
                                                 .content('You received the following automated error email from one of my subscriber orgs. What does it mean? \n\n' + error.txl_FullMailBody__c))

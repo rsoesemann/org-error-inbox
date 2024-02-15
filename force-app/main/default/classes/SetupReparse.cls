@@ -13,7 +13,7 @@ public with sharing class SetupReparse extends BatchSetupStep {
     public String filter {
         get {
             if(filter == null) {
-                filter = 'lkp_License__c = NULL OR txt_ExceptionType__c = NULL';
+                filter = 'txt_ExceptionType__c = NULL';
             }
             return filter;
         }
@@ -23,7 +23,7 @@ public with sharing class SetupReparse extends BatchSetupStep {
     public Integer recordCount {
         get {
             try {
-                recordCount = Database.countQuery('SELECT Count() FROM AppError__c WHERE ' + filter, AccessLevel.SYSTEM_MODE);
+                recordCount = Database.countQuery('SELECT Count() FROM OrgError__c WHERE ' + filter, AccessLevel.SYSTEM_MODE);
             }
             catch(Exception ex) {
                 ApexPages.addMessages(ex);
@@ -42,7 +42,7 @@ public with sharing class SetupReparse extends BatchSetupStep {
 
         if(result == null) {
 			ApexPages.Severity severity = (recordCount > 0) ? ApexPages.Severity.WARNING : ApexPages.Severity.CONFIRM;
-			result = new ApexPages.Message(severity, 'Reparse ' + recordCount + ' AppErrors now?');
+			result = new ApexPages.Message(severity, 'Reparse ' + recordCount + ' OrgErrors now?');
 		}
 
 		return result;
@@ -61,12 +61,12 @@ public with sharing class SetupReparse extends BatchSetupStep {
 
 
 	public List<SObject> start(Database.BatchableContext ctx) {
-		return Database.query('SELECT Id FROM AppError__c WHERE ' + filter, AccessLevel.SYSTEM_MODE);
+		return Database.query('SELECT Id FROM OrgError__c WHERE ' + filter, AccessLevel.SYSTEM_MODE);
 	}
 
 
-	public void execute(Database.BatchableContext ctx, List<AppError__c> errors) {
-		ParseAppErrors.parseAlways = true;
+	public void execute(Database.BatchableContext ctx, List<OrgError__c> errors) {
+		ParseOrgErrors.parseAlways = true;
         update as system errors;
 	}
 

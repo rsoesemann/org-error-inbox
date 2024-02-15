@@ -7,7 +7,7 @@ private class AddErrorInsights_Test {
         // Setup
         insert new Settings__c(txt_OpenAiApiKey__c = 'any');
         
-        AppError__c e = (AppError__c) new AppError().persist();
+        OrgError__c e = (OrgError__c) new OrgError().persist();
 
         Test.startTest();
         new HttpMock()
@@ -22,7 +22,7 @@ private class AddErrorInsights_Test {
 
         
         // Verify
-        e = [SELECT txl_Hints__c FROM AppError__c LIMIT 1];
+        e = [SELECT txl_Hints__c FROM OrgError__c LIMIT 1];
         Assert.areEqual('Check the Power cord', e.txl_Hints__c);
     }
 }

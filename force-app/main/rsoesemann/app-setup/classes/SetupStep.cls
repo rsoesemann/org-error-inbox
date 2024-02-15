@@ -82,55 +82,6 @@ public abstract class SetupStep {
     }
 
 
-    public static void create(MetadataService.Metadata metadata) {
-        create( new List<MetadataService.Metadata>{ metadata } );
-    }
-
-    public static void create(List<MetadataService.Metadata> metadata) {
-        handle( createInBatch(metadata) );
-    }
-
-
-    public static void overwrite(MetadataService.Metadata metadata) {
-        overwrite( new List<MetadataService.Metadata>{ metadata } );
-    }
-
-
-    public static void overwrite(List<MetadataService.Metadata> metadata) {
-        handle( mdApi().updateMetadata(metadata) );
-    }
-
-
-    public static MetadataService.Metadata readMetadata(String type, String fullName) {
-        return mdApi().readMetadata(type, new List<String>{ fullName }).getRecords()[0];
-    }
-
-
-    // PRIVATE
-
-    private static void handle(List<MetadataService.SaveResult> saveResults) {
-        for(MetadataService.SaveResult result : saveResults) {
-            if(result != null) {
-                if(result.errors != null) {
-                    List<String> messages = new List<String>();
-                    messages.add(result.fullName);
-                    for(MetadataService.Error error : result.errors) {
-                        messages.add(error.message + ' (' + error.statusCode + ').' +
-                                            ( error.fields!=null && error.fields.size() > 0 ?
-                                                                ' Fields ' + String.join(error.fields, ',') + '.' : '' ) );
-                    }
-
-                    if(messages.size() > 0) {
-                        throw new MetadataServiceException(String.join(messages, ' '));
-                    }
-                }
-
-                if(!result.success) {
-                    throw new MetadataServiceException('Metdata API called failed.');
-                }
-            }
-        }
-    }
 
 
     protected String setupLink(List<SObject> records) {
@@ -176,48 +127,6 @@ public abstract class SetupStep {
         result.setRedirect(true);
         return result;
     }
-
-    // PRIVATE
-
-    private static MetadataService.MetadataPort mdApi() {
-        MetadataService.MetadataPort result = null;
-
-        try {
-            result = new MetadataService.MetadataPort();
-            result.SessionHeader = new MetadataService.SessionHeader_element();
-            result.SessionHeader.sessionId = UserInfo.getSessionId();
-        }
-        catch(Exception ex) {
-            ApexPages.addMessages(ex);
-            System.debug(LoggingLevel.ERROR, '' +  ex);
-        }
-
-        return result;
-    }
-
-
-    // Note: Metadata service accepts only 10 records at a time
-    private static List<MetadataService.SaveResult> createInBatch(List<MetadataService.Metadata> metadata) {
-        List<MetadataService.SaveResult> result = new List<MetadataService.SaveResult>();
-
-        List<MetadataService.Metadata> currentBatch = new List<MetadataService.Metadata>();
-        Integer batchSize = 10;
-
-        for(MetadataService.Metadata record : metadata) {
-            currentBatch.add(record);
-
-            if(currentBatch.size() == batchSize && !currentBatch.isEmpty()) {
-                result.addAll(mdApi().createMetadata(currentBatch));
-                currentBatch.clear();
-            }
-        }
-        
-        if(!currentBatch.isEmpty()) {
-            result.addAll(mdApi().createMetadata(currentBatch));            
-        }
-        return result;
-    }
-
 
     // INNER
 

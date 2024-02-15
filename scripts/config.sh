@@ -1,3 +1,3 @@
-PACKAGE_NAME="isv-cockpit"
+PACKAGE_NAME="org-error-inbox"
 DEV_HUB_ALIAS="MyDevHub"
-SCRATCH_ORG_ALIAS="isv-cockpit_DEV"
+SCRATCH_ORG_ALIAS="org-error-inbox_DEV"

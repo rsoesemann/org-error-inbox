@@ -5,23 +5,18 @@ execute() {
   $@ || exit
 }
 
-if [ -z "$DEV_HUB_URL" ]; then
-  echo "set default devhub user"
-  execute sf config set defaultdevhubusername=$DEV_HUB_ALIAS
 
-  echo "Deleting old scratch org"
-  sf force org delete --no-prompt --target-org $SCRATCH_ORG_ALIAS
-fi
+echo "set default devhub user"
+execute sf config set defaultdevhubusername=$DEV_HUB_ALIAS
+
+echo "Deleting old scratch org"
+sf org delete scratch --no-prompt --target-org $SCRATCH_ORG_ALIAS
 
 echo "Creating scratch org"
-execute sf force org create --setalias $SCRATCH_ORG_ALIAS --setdefaultusername --definitionfile ./config/scratch-org-def.json --durationdays 30
-
-echo "Install dependencies"
-execute sfdx force:package:install --package 04t30000001DWL0AAO --publishwait 5 --wait 10 -u $SCRATCH_ORG_ALIAS
+execute sf org create scratch --alias $SCRATCH_ORG_ALIAS --set-default --definition-file ./config/scratch-org-def.json --duration-days 30
 
 echo "Pushing changes to scratch org"
-execute sf force source push
-# Will fail as your first have to go into the Org, turn Slack on and turn Slack for Apex on.
+execute sf project deploy start
 
 echo "Assigning permissions"
 execute sf force user permset assign --perm-set-name Admin
