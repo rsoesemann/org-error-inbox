@@ -13,7 +13,7 @@
         <headerColor>#CF0000</headerColor>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
-    <description>Monitor your ISV app directly from you Partner Business Org (PBO)</description>
+    <description>Receive and manage your org's error emails from within your org.</description>
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>

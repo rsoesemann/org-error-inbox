@@ -1,5 +1,5 @@
 {
-  "orgName": "isv-cockpit_DEV",
+  "orgName": "org-error-inbox_DEV",
   "edition": "Developer",
   "language": "en_US",
   "features": ["FieldAuditTrail","EnableSetPasswordInApi"],

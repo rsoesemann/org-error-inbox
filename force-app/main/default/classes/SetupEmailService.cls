@@ -1,6 +1,6 @@
 public with sharing class SetupEmailService extends SetupStep {
 
-    private static final String DEVELOPER_NAME = 'IsvCockpit_EmailReceiver';
+    private static final String DEVELOPER_NAME = 'OrgErrorInbox_EmailReceiver';
     private Id classId = [SELECT Id FROM ApexClass WHERE Name = 'ErrorMailReceiver' LIMIT 1].Id;
 
     // PUBLIC

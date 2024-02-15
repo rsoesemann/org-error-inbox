@@ -1,4 +1,4 @@
-<apex:page controller="SetupPageCtrl" title="ISV Cockpit - Setup" docType="html-5.0" sidebar="false" lightningStylesheets="true">
+<apex:page controller="SetupPageCtrl" title="Org Error Inbox - Setup" docType="html-5.0" sidebar="false" lightningStylesheets="true">
     <c:setup ctrl="{!controller}">
         <c:setupStep title="Fetch App Error Emails (Mandatory)" step="{!setupEmailService}">
             <apex:pageBlock id="block" rendered="{!setupEmailService.isActive}">
