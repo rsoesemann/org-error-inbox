@@ -156,14 +156,14 @@
     <enableSharing>false</enableSharing>
     <enableStreamingApi>false</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>App Error</label>
+    <label>Org Error</label>
     <nameField>
-        <displayFormat>CER-{0000}</displayFormat>
-        <label>App Error #</label>
+        <displayFormat>ERR-{0000}</displayFormat>
+        <label>Org Error #</label>
         <trackFeedHistory>false</trackFeedHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>App Errors</pluralLabel>
+    <pluralLabel>Org Errors</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
         <customTabListAdditionalFields>txt_OrgId__c</customTabListAdditionalFields>

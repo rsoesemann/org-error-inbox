@@ -31,7 +31,6 @@ public with sharing class Tokenizer {
             for(Integer index=0; index<fields.size(); index++) {
                 SObjectField field = fields.get(index);
                 String value = match.group(index + 1).abbreviate(field.getDescribe().getLength());
-                
                 error.put(field, value);
             }
         }

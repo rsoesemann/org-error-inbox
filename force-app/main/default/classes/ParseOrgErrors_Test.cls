@@ -20,7 +20,6 @@ private class ParseOrgErrors_Test {
         // Verify
         System.assertEquals('005500000024uNj', e.txt_UserId__c);
         System.assertEquals('00D000000000001', e.txt_OrgId__c);
-        System.assertEquals('NSA', e.txt_Namespace__c);
         System.assertEquals('System.NullPointerException', e.txt_ExceptionType__c);
         System.assertEquals('Attempt to de-reference a null object', e.txt_ExceptionMessage__c);
         System.assertEquals('MyController', e.txt_ApexClass__c);
@@ -44,7 +43,6 @@ private class ParseOrgErrors_Test {
         // Verify
         System.assertEquals('005500000024uNj', e.txt_UserId__c);
         System.assertEquals('00D000000000001', e.txt_OrgId__c);
-        System.assertEquals('NSA', e.txt_Namespace__c);
         System.assertEquals('System.DmlException', e.txt_ExceptionType__c);
         System.assertEquals('Delete failed. First exception on row 0 with id a031t00000RuMxyAAF; first error: ENTITY_IS_DELETED, entity is deleted: []', e.txt_ExceptionMessage__c);
         System.assertEquals('TriggerDelete', e.txt_ApexClass__c);
@@ -68,7 +66,6 @@ private class ParseOrgErrors_Test {
         // Verify
         System.assertEquals('005500000024uNj', e.txt_UserId__c);
         System.assertEquals('00D000000000001', e.txt_OrgId__c);
-        System.assertEquals('NSA', e.txt_Namespace__c);
         System.assertEquals('System.DmlException', e.txt_ExceptionType__c);
         System.assertEquals('Insert failed. First exception on row 0; first error: STRING_TOO_LONG, Log Status: Datenwert zu groß: Fehler NSA.RetrieveAction.UnsuccessfulCalloutException (max length=80): [Name]', e.txt_ExceptionMessage__c);
         System.assertEquals('IteratorImpl', e.txt_ApexClass__c);
@@ -121,8 +118,8 @@ private class ParseOrgErrors_Test {
             String message = 'Failed on error ' + index++ + ' ' + e.txl_FullMailBody__c;
             System.assertNotEquals(null, e.txt_OrgId__c, message);
             System.assertNotEquals(null, e.txt_UserId__c, message);
-            System.assertNotEquals(null, e.txt_Namespace__c, message);
             System.assertNotEquals(null, e.txt_ApexClass__c, message);
+            System.assertNotEquals(null, e.txt_Method__c, message);
             System.assertNotEquals(null, e.txt_ExceptionType__c, message);
             System.assertNotEquals(null, e.txt_ExceptionMessage__c, message);
         }
@@ -139,8 +136,8 @@ private class ParseOrgErrors_Test {
 
 
     private static List<OrgError__c> query() {
-        return [SELECT txt_UserId__c, txt_OrgId__c, txt_Namespace__c, txt_ExceptionType__c, txt_ExceptionMessage__c,
-                txt_ApexClass__c, txt_VisualforcePage__c, txl_Stacktrace__c, txl_FullMailBody__c FROM OrgError__c];
+        return [SELECT txt_UserId__c, txt_OrgId__c, txt_ExceptionType__c, txt_ExceptionMessage__c,
+                txt_ApexClass__c, txt_Method__c, txt_VisualforcePage__c, txl_Stacktrace__c, txl_FullMailBody__c FROM OrgError__c];
     }
 
 

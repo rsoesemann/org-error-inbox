@@ -43,18 +43,28 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>OrgError__c.txt_Method__c</field>
+        <editable>false</editable>
+        <field>OrgError__c.txt_JobId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>OrgError__c.txt_Namespace__c</field>
+        <field>OrgError__c.txt_Object__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrgError__c.txt_Trigger__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>OrgError__c.txt_OrgId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>OrgError__c.txt_RecordId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

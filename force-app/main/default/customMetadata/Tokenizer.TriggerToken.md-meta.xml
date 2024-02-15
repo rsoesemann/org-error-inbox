@@ -8,27 +8,27 @@
     </values>
     <values>
         <field>num_Position__c</field>
-        <value xsi:type="xsd:double">7.0</value>
+        <value xsi:type="xsd:double">6.0</value>
     </values>
     <values>
         <field>txl_RegExp__c</field>
-        <value xsi:type="xsd:string">Trigger\.(.+)\.([^:]+)</value>
+        <value xsi:type="xsd:string">(?s)(\w+): execution of (\w+).*?Class\.(\w+)\.(\w+): line</value>
     </values>
     <values>
         <field>txt_Group1Field__c</field>
-        <value xsi:type="xsd:string">txt_Namespace__c</value>
+        <value xsi:type="xsd:string">txt_Object__c</value>
     </values>
     <values>
         <field>txt_Group2Field__c</field>
-        <value xsi:type="xsd:string">txt_ApexClass__c</value>
+        <value xsi:type="xsd:string">txt_Trigger__c</value>
     </values>
     <values>
         <field>txt_Group3Field__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">txt_ApexClass__c</value>
     </values>
     <values>
         <field>txt_Group4Field__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">txt_Method__c</value>
     </values>
     <values>
         <field>txt_Group5Field__c</field>

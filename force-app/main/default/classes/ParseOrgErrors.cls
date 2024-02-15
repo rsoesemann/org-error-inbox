@@ -80,11 +80,15 @@ public without sharing class ParseOrgErrors implements Triggers.Handler,
     private static void clearFields(OrgError__c error) {
         error.txt_UserId__c = null;
 		error.txt_OrgId__c = null;
-		error.txt_Namespace__c = null;
 		error.txt_VisualforcePage__c = null;
 		error.txt_ExceptionType__c = null;
 		error.txt_ExceptionMessage__c = null;
         error.txt_ApexClass__c = null;
+        error.txt_Method__c = null;
+        error.txt_JobId__c = null;
+        error.txt_Object__c = null;
+        error.txt_Trigger__c = null;
+        error.txt_RecordId__c = null;
     }
 
     private Boolean notRecordedLive(OrgError__c error) {

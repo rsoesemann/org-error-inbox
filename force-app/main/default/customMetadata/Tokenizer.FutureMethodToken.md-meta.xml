@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>ExceptionWithClassToken</label>
+    <label>FutureMethodToken</label>
     <protected>false</protected>
     <values>
         <field>chk_IsActive__c</field>
@@ -8,15 +8,15 @@
     </values>
     <values>
         <field>num_Position__c</field>
-        <value xsi:type="xsd:double">4.0</value>
+        <value xsi:type="xsd:double">3.0</value>
     </values>
     <values>
         <field>txl_RegExp__c</field>
-        <value xsi:type="xsd:string">[\n\r]+([^.]+)\.([^.&apos; ]+): (.+Exception): (.+)</value>
+        <value xsi:type="xsd:string">method &apos;[^&apos;]*? (\w+\(.*?\))&apos; on class &apos;([^&apos;]+)&apos;</value>
     </values>
     <values>
         <field>txt_Group1Field__c</field>
-        <value xsi:type="xsd:string">txt_Namespace__c</value>
+        <value xsi:type="xsd:string">txt_Method__c</value>
     </values>
     <values>
         <field>txt_Group2Field__c</field>
@@ -24,11 +24,11 @@
     </values>
     <values>
         <field>txt_Group3Field__c</field>
-        <value xsi:type="xsd:string">txt_ExceptionType__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>txt_Group4Field__c</field>
-        <value xsi:type="xsd:string">txt_ExceptionMessage__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>txt_Group5Field__c</field>
