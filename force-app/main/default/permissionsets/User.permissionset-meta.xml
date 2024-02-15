@@ -71,6 +71,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>OrgError__c.lkp_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>OrgError__c.txt_VisualforcePage__c</field>
         <readable>true</readable>
     </fieldPermissions>

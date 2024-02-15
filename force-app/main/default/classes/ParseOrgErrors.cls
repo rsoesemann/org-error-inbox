@@ -57,6 +57,8 @@ public without sharing class ParseOrgErrors implements Triggers.Handler,
                 }
             }
         }
+
+        linkUsers(errors);
     }
 
 
@@ -79,6 +81,7 @@ public without sharing class ParseOrgErrors implements Triggers.Handler,
 
     private static void clearFields(OrgError__c error) {
         error.txt_UserId__c = null;
+        error.lkp_User__c = null;
 		error.txt_OrgId__c = null;
 		error.txt_VisualforcePage__c = null;
 		error.txt_ExceptionType__c = null;
@@ -94,5 +97,12 @@ public without sharing class ParseOrgErrors implements Triggers.Handler,
     private Boolean notRecordedLive(OrgError__c error) {
         // Note: Only equals when error received as email 
         return (error.CreatedDate > error.dtm_RecordedDate__c);
+    }
+
+
+    private void linkUsers(List<OrgError__c> errors) {
+        for(OrgError__c error : errors) {
+            error.lkp_User__c = error.txt_UserId__c;
+        }
     }
 }
