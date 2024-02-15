@@ -12,15 +12,15 @@
     </values>
     <values>
         <field>txl_RegExp__c</field>
-        <value xsi:type="xsd:string">(?:for class |Class[\. ])&apos;?([^.]+).([^.&apos; ]+)</value>
+        <value xsi:type="xsd:string">(?m)Class\.(\w+)\.(\w+)(?:(?!\sClass\.).)*$</value>
     </values>
     <values>
         <field>txt_Group1Field__c</field>
-        <value xsi:type="xsd:string">txt_Namespace__c</value>
+        <value xsi:type="xsd:string">txt_ApexClass__c</value>
     </values>
     <values>
         <field>txt_Group2Field__c</field>
-        <value xsi:type="xsd:string">txt_ApexClass__c</value>
+        <value xsi:type="xsd:string">txt_Method__c</value>
     </values>
     <values>
         <field>txt_Group3Field__c</field>
