@@ -1,6 +1,10 @@
 # Salesforce Org Error Inbox
 
-The Org Error Inbox is a native Salesforce App that receives your orgs error emails. It organizes them, notifies you and helps you solve the underlying issues.
+Salesforce Orgs can send out notification emails when unhandled exceptions happen in Apex code or Flow or elsewhere. Admins can [define an email adress for this](https://help.salesforce.com/s/articleView?id=000385876&type=1) in the setup.
+
+The Org Error Inbox is a native Salesforce App that provides you with an email address to receive those emails. Error emails are parsed and stored in a Custom Object where you can report on and create sophisticated Support workflows.
+
+NOTE: This app has a [bigger brother for AppExchange partners](https://github.com/rsoesemann/salesforce-isv-cockpit) that want to collect and proactivly manage app errors in their subscribers' orgs.
 
 **Features:**
 
