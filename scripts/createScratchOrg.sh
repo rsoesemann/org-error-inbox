@@ -31,5 +31,6 @@ echo "Running Apex Tests"
 execute sf apex run test --test-level RunLocalTests --wait 30 --code-coverage --result-format human
 
 echo "Running Salesforce Code Analyser"
-sfdx scanner:run --format table --target force-app --engine "pmd" --pmdconfig "ruleset.xml"
-sfdx scanner:run:dfa --format table --target force-app --projectdir force-app
+sf scanner run --format=table --target="./" --category="Security"
+sf scanner run dfa --format=table --target="./" --projectdir="./" --category="Security"
+sf scanner run --engine="pmd-appexchange" --format=table --target="./"
