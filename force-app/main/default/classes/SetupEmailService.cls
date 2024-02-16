@@ -21,7 +21,7 @@ public with sharing class SetupEmailService extends SetupStep {
     }
 
 
-    public List<Tokenizer__mdt> tokenizers { get { return new TokenizersSelector().allActiveInOrder(); } private set; }
+    public List<Tokenizer__mdt> tokenizers { get { return Tokenizer.allActiveInOrder(); } private set; }
 
 
     public override ApexPages.Message getStatus() {

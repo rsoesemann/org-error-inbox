@@ -57,7 +57,6 @@
                 <li><a href="https://github.com/rsoesemann/apex-domainbuilder/blob/master/LICENSE" target="_blank">rsoesemann/apex-domainbuilder</a></li>
                 <li><a href="https://github.com/rsoesemann/apex-httpmock/blob/master/LICENSE" target="_blank">rsoesemann/apex-httpmock</a></li>
                 <li><a href="https://github.com/apexfarm/ApexTriggerHandler/blob/master/LICENSE" target="_blank">apexfarm/ApexTriggerHandler</a></li>
-                <li><a href="https://github.com/beyond-the-cloud-dev/soql-lib/blob/master/LICENSE" target="_blank">beyond-the-cloud-dev/soql-lib</a></li>
             </ul>
         </c:setupStep>
     </c:setup>

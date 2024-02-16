@@ -40,10 +40,18 @@ public with sharing class Tokenizer {
     public static List<Tokenizer> initialize() {
         List<Tokenizer> result = new List<Tokenizer>();
 
-        for(Tokenizer__mdt record : new TokenizersSelector().allActiveInOrder()) {
+        for(Tokenizer__mdt record : allActiveInOrder()) {
             result.add(new Tokenizer(record));
         }
         
         return result;
+    }
+
+    public static List<Tokenizer__mdt> allActiveInOrder() {
+        return [SELECT DeveloperName, Label, chk_IsActive__c,num_Position__c,txl_RegExp__c,txt_Group1Field__c,txt_Group2Field__c,txt_Group3Field__c,txt_Group4Field__c,txt_Group5Field__c
+                FROM Tokenizer__mdt
+                WHERE chk_IsActive__c = true
+                WITH SYSTEM_MODE
+                ORDER BY num_Position__c];
     }
 }
