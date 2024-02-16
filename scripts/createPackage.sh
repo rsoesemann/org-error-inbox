@@ -1,6 +1,8 @@
 #!/bin/bash
 source `dirname $0`/config.sh
 
+echo sf package create --name org-error-inbox --package-type Unlocked --path force-app -v MyDevHub
+
 execute() {
   $@ || exit
 }
@@ -15,8 +17,8 @@ sfdx force:package:version:list -p $PACKAGE_NAME --concise
 
 echo "Create new package version"
 # For Version create with dependcies work I need package name AND version in my project json
-PACKAGE_VERSION="$(execute sfdx force:package:version:create -p $PACKAGE_NAME -f config/package-org-def.json -x -w 10 --codecoverage --json | jq '.result.SubscriberPackageVersionId' | tr -d '"')"
-echo "Promote with: sfdx force:package:version:promote -p $PACKAGE_VERSION"
+PACKAGE_VERSION="$(execute sf package version create -p $PACKAGE_NAME -f config/package-org-def.json -x -w 10 --code-coverage --json | jq '.result.SubscriberPackageVersionId' | tr -d '"')"
+echo "Promote with: sf package versionpromote -p $PACKAGE_VERSION"
 echo "Install from: /packaging/installPackage.apexp?p0=$PACKAGE_VERSION"
 
 if [ $QA_ORG_ALIAS ]; then
