@@ -13,13 +13,15 @@
         <headerColor>#CF0000</headerColor>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
-    <description>Receive and manage your org's error emails from within your org.</description>
+    <description>Receive and manage your org&apos;s error emails from within your org.</description>
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Org Error Inbox</label>
     <navType>Standard</navType>
+    <tabs>Home</tabs>
     <tabs>OrgError__c</tabs>
     <tabs>Setup</tabs>
     <uiType>Lightning</uiType>
