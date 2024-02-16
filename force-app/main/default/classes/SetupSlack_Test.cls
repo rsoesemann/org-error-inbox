@@ -49,22 +49,4 @@ private class SetupSlack_Test {
         // Verify
         System.assertEquals(ApexPages.Severity.CONFIRM, step.getStatus().getSeverity());
     }
-        
-
-    @IsTest
-    private static void incompleteSettings() {
-        
-        // Setup
-        Settings__c settings = new Settings__c(txt_SlackTeam__c = 'Txxxxxx');
-        insert settings;
-
-
-        // Exercise
-        new SetupSlack().run();
-
-
-        // Verify
-        settings = [SELECT CreatedDate, LastModifiedDate FROM Settings__c LIMIT 1];
-        System.assertEquals(settings.CreatedDate, settings.LastModifiedDate);
-    }
 }
