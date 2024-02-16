@@ -99,10 +99,31 @@ public without sharing class ParseOrgErrors implements Triggers.Handler,
         return (error.CreatedDate > error.dtm_RecordedDate__c);
     }
 
-
     private void linkUsers(List<OrgError__c> errors) {
+        Set<Id> existingUsers = existingUsers(errors);
+
         for(OrgError__c error : errors) {
-            error.lkp_User__c = error.txt_UserId__c;
+            if(existingUsers.contains(error.txt_UserId__c)) {
+                error.lkp_User__c = error.txt_UserId__c;
+            }
         }
     }
+
+    private Set<Id> existingUsers(List<OrgError__c> errors) {
+        Set<Id> result = new Set<Id>();
+
+        for(OrgError__c error : errors) {
+            result.add(error.txt_UserId__c);
+        }
+
+        Map<Id, User> users = new Map<Id, User>(
+            [SELECT Id FROM User WHERE Id IN :result]
+        );
+
+        result.retainAll(users.keySet());
+
+        return result;
+    }
+
+
 }
