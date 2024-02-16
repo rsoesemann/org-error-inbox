@@ -24,17 +24,18 @@
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
+                <expandOthers>true</expandOthers>
                 <groupingColumn>OrgError__c.txt_ApexClass__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
+                        <sortColumn>RowCount</sortColumn>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>All Org Errors Report by Class</header>
+                <header>All Org Errors by Class</header>
                 <legendPosition>Right</legendPosition>
-                <maxValuesDisplayed>6</maxValuesDisplayed>
+                <maxValuesDisplayed>50</maxValuesDisplayed>
                 <report>OrgErrorReports/OrgErrorsbyClass30d</report>
                 <showPercentage>true</showPercentage>
                 <showTotal>true</showTotal>
