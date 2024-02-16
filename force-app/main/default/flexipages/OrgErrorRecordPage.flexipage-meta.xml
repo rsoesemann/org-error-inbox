@@ -113,8 +113,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.txt_UserId__c</fieldItem>
-                <identifier>Recordtxt_UserId_cField</identifier>
+                <fieldItem>Record.lkp_User__c</fieldItem>
+                <identifier>Recordlkp_User_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

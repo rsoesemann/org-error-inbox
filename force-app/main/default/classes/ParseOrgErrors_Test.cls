@@ -1,3 +1,4 @@
+@SuppressWarnings('PMD.AvoidHardcodingId')
 @IsTest
 private class ParseOrgErrors_Test {
 
@@ -45,7 +46,7 @@ private class ParseOrgErrors_Test {
         System.assertEquals('00D000000000001', e.txt_OrgId__c);
         System.assertEquals('System.DmlException', e.txt_ExceptionType__c);
         System.assertEquals('Delete failed. First exception on row 0 with id a031t00000RuMxyAAF; first error: ENTITY_IS_DELETED, entity is deleted: []', e.txt_ExceptionMessage__c);
-        System.assertEquals('TriggerDelete', e.txt_ApexClass__c);
+        System.assertEquals('TriggerHandler', e.txt_ApexClass__c);
         System.assertEquals(null, e.txt_VisualforcePage__c);
     }
 
@@ -67,8 +68,8 @@ private class ParseOrgErrors_Test {
         System.assertEquals('005500000024uNj', e.txt_UserId__c);
         System.assertEquals('00D000000000001', e.txt_OrgId__c);
         System.assertEquals('System.DmlException', e.txt_ExceptionType__c);
-        System.assertEquals('Insert failed. First exception on row 0; first error: STRING_TOO_LONG, Log Status: Datenwert zu groß: Fehler NSA.RetrieveAction.UnsuccessfulCalloutException (max length=80): [Name]', e.txt_ExceptionMessage__c);
-        System.assertEquals('IteratorImpl', e.txt_ApexClass__c);
+        System.assertEquals('Insert failed. First exception on row 0;', e.txt_ExceptionMessage__c);
+        System.assertEquals('DMLManager', e.txt_ApexClass__c);
         System.assertEquals(null, e.txt_VisualforcePage__c);
     }
 
@@ -85,7 +86,7 @@ private class ParseOrgErrors_Test {
 
 
         // Exercise
-        e.txl_FullMailBody__c = e.txl_FullMailBody__c.replaceAll('NSA.MyController', 'NSA.MyOtherController');
+        e.txl_FullMailBody__c = e.txl_FullMailBody__c.replaceAll('MyController', 'MyOtherController');
         update e;
 
         

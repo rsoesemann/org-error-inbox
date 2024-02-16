@@ -6,8 +6,9 @@
     <columns>txt_ExceptionType__c</columns>
     <columns>txt_ExceptionMessage__c</columns>
     <columns>txt_ApexClass__c</columns>
-    <columns>txt_Method__c</columns>
-    <columns>txt_UserId__c</columns>
+    <columns>txt_Object__c</columns>
+    <columns>txt_Trigger__c</columns>
+    <columns>lkp_User__c</columns>
     <filterScope>Everything</filterScope>
     <label>Inbox</label>
 </ListView>
