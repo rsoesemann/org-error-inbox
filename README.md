@@ -11,6 +11,10 @@ The Org Error Inbox is a native Salesforce App that provides you with an email a
 - [Explain errors and fixes using **OpenAI API** integration](https://youtu.be/dERb_22VSfI)
 - Nice Dashboard with Insights into your Errors
 
+<img src="resources/homepage.png" width="250px" />
+<img src="resources/errorslist.png" width="250px" />
+<img src="resources/errorspage.png" width="250px" />
+
 ---
 > NOTE: This app has a [bigger brother for AppExchange partners](https://github.com/rsoesemann/salesforce-isv-cockpit) that want to collect and proactivly manage app errors in their subscribers' orgs.
 
