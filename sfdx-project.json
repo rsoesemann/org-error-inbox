@@ -4,7 +4,7 @@
       "path": "force-app",
       "default": true,
       "package": "org-error-inbox",
-      "versionName": "ver 1.1",
+      "versionName": "ver 1.2",
       "versionNumber": "1.0.1.NEXT",
       "definitionFile": "config/scratch-org-def.json",
       "versionDescription": ""
@@ -17,6 +17,8 @@
     "org-error-inbox": "0HoVI0000002BLx0AM",
     "org-error-inbox@1.0.0-2": "04tVI0000002MvhYAE",
     "org-error-inbox@1.0.0-4": "04tVI0000002NBpYAM",
-    "org-error-inbox@1.0.1-1": "04tVI0000002NDRYA2"
+    "org-error-inbox@1.0.1-1": "04tVI0000002NDRYA2",
+    "org-error-inbox@1.0.1-2": "04tVI0000002OizYAE",
+    "org-error-inbox@1.0.1-3": "04tVI0000002OuHYAU"
   }
 }
