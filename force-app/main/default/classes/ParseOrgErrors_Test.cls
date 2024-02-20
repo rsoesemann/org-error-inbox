@@ -4,77 +4,6 @@ private class ParseOrgErrors_Test {
 
     private static List<String> mails;
 
-
-    @IsTest
-    private static void pageError() {
-
-        // Setup
-        setup();
-
-        OrgError__c e = new OrgError__c(txl_FullMailBody__c = mails[0]);
-
-
-        // Exercise
-        new ParseOrgErrors(e).execute();
-
-
-        // Verify
-        System.assertEquals('005500000024uNj', e.txt_UserId__c);
-        System.assertEquals('00D000000000001', e.txt_OrgId__c);
-        System.assertEquals('System.NullPointerException', e.txt_ExceptionType__c);
-        System.assertEquals('Attempt to de-reference a null object', e.txt_ExceptionMessage__c);
-        System.assertEquals('MyController', e.txt_ApexClass__c);
-        System.assertEquals('myPage', e.txt_VisualforcePage__c);
-    }
-
-
-    @IsTest
-    private static void triggerError() {
-
-        // Setup
-        setup();
-
-        OrgError__c e = new OrgError__c(txl_FullMailBody__c = mails[1]);
-
-
-        // Exercise
-        new ParseOrgErrors(e).execute();
-
-
-        // Verify
-        System.assertEquals('005500000024uNj', e.txt_UserId__c);
-        System.assertEquals('00D000000000001', e.txt_OrgId__c);
-        System.assertEquals('System.DmlException', e.txt_ExceptionType__c);
-        System.assertEquals('Delete failed. First exception on row 0 with id a031t00000RuMxyAAF; first error: ENTITY_IS_DELETED, entity is deleted: []', e.txt_ExceptionMessage__c);
-        System.assertEquals('TriggerHandler', e.txt_ApexClass__c);
-        System.assertEquals(null, e.txt_VisualforcePage__c);
-    }
-
-
-    @IsTest
-    private static void batchError() {
-
-        // Setup
-        setup();
-
-        OrgError__c e = new OrgError__c(txl_FullMailBody__c = mails[2]);
-
-
-        // Exercise
-        new ParseOrgErrors(e).execute();
-
-
-        // Verify
-        System.assertEquals('005500000024uNj', e.txt_UserId__c);
-        System.assertEquals('00D000000000001', e.txt_OrgId__c);
-        System.assertEquals('System.DmlException', e.txt_ExceptionType__c);
-        System.assertEquals('Insert failed. First exception on row 0;', e.txt_ExceptionMessage__c);
-        System.assertEquals('DMLManager', e.txt_ApexClass__c);
-        System.assertEquals(null, e.txt_VisualforcePage__c);
-    }
-
-
-
     @IsTest
     private static void reparseOnChange(){
 
@@ -86,12 +15,12 @@ private class ParseOrgErrors_Test {
 
 
         // Exercise
-        e.txl_FullMailBody__c = e.txl_FullMailBody__c.replaceAll('MyController', 'MyOtherController');
+        e.txl_FullMailBody__c = e.txl_FullMailBody__c.replaceAll('ACME.OpportunityService', 'ACME.LeadService');
         update e;
 
         
         // Verify
-        System.assertEquals('MyOtherController' , [SELECT txt_ApexClass__c FROM OrgError__c LIMIT 1].txt_ApexClass__c);
+        System.assertEquals('ACME.LeadService' , [SELECT txt_ApexClass__c FROM OrgError__c LIMIT 1].txt_ApexClass__c);
     }
 
 

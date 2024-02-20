@@ -34,7 +34,7 @@ public with sharing class SetupEmailService extends SetupStep {
             return new ApexPages.Message(ApexPages.Severity.CONFIRM, message);
         }
         else {
-            return new ApexPages.Message(ApexPages.Severity.WARNING, 'An Email Service is required to allow the tool to receive app errors.');
+            return new ApexPages.Message(ApexPages.Severity.WARNING, 'An active Email Service is required to receive error emails.');
         }
     }
 
