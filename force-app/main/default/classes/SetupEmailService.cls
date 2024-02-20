@@ -1,6 +1,6 @@
 public with sharing class SetupEmailService extends SetupStep {
 
-    private static final String DEVELOPER_NAME = 'OrgErrorInbox_EmailReceiver';
+    private static final String DEVELOPER_NAME = 'OrgErrorInbox';
     private Id classId = [SELECT Id FROM ApexClass WHERE Name = 'ErrorMailReceiver' LIMIT 1].Id;
 
     // PUBLIC
@@ -20,17 +20,17 @@ public with sharing class SetupEmailService extends SetupStep {
         get { return (service != null && service.Function.IsActive); } private set; 
     }
 
-
     public List<Tokenizer__mdt> tokenizers { get { return Tokenizer.allActiveInOrder(); } private set; }
 
 
     public override ApexPages.Message getStatus() {
         if(isActive) {
             String address = service.LocalPart + '@' + service.EmailDomainName;
-            String link = '<em><a href="/lightning/setup/EmailToApexFunction/page?address=%2Femail-admin%2Fservices%2FdetailEmailServicesAddress.apexp%3Fid%3D' + service.Id + '">' + address + '</a></em>';
-            String message = String.format('An Email Service is set up to receive error emails. Configure your Org to send errors to: {0}.<br/><br/>' +
-                                           '{1} for {2} Email Tokenizers is available.',
-                             new List<String>{ link, setupLink('m00', 'CustomMetadata', 'Custom Metadata'), ''+ tokenizers.size()});
+            String serviceLink = '<em><a target="_blank" href="/lightning/setup/EmailToApexFunction/page?address=%2Femail-admin%2Fservices%2FdetailEmailServicesAddress.apexp%3Fid%3D' + service.Id + '">Email Service</a></em>';
+            String emailLink = '<em><a target="_blank href="mailto:' + address + '">' + address + '</a></em>';
+            String message = String.format('An {0} is set up to receive error emails. Configure your Org to send errors to:<br/><br/>{1}.<br/><br/>' +
+                                           '{2} for {3} Email Tokenizers is available.',
+                             new List<String>{ serviceLink, emailLink, setupLink('m00', 'CustomMetadata', 'Custom Metadata'), ''+ tokenizers.size()});
             return new ApexPages.Message(ApexPages.Severity.CONFIRM, message);
         }
         else {
@@ -93,7 +93,7 @@ public with sharing class SetupEmailService extends SetupStep {
                 '<urn:FunctionId>' + functionId + '</urn:FunctionId>' +
                 '<urn:DeveloperName>' + DEVELOPER_NAME + '</urn:DeveloperName>' +
                 '<urn:IsActive>true</urn:IsActive>' +
-                '<urn:LocalPart>app-error-inbox</urn:LocalPart>' +
+                '<urn:LocalPart>org-error-inbox</urn:LocalPart>' +
                 '<urn:RunAsUserId>' + UserInfo.getUserId() + '</urn:RunAsUserId>'
             );
         }
@@ -118,7 +118,7 @@ public with sharing class SetupEmailService extends SetupStep {
 
     private void soapApi(String operation, String sobjectXml) {
         HttpRequest request = new HttpRequest();
-        request.setEndpoint(URL.getOrgDomainUrl().toExternalForm() + '/services/Soap/u/54.0');
+        request.setEndpoint(URL.getOrgDomainUrl().toExternalForm() + '/services/Soap/u/60.0');
         request.setMethod('POST');
         request.setHeader('Content-Type', 'text/xml; charset=UTF-8');
         request.setHeader('SOAPAction', 'ignored');
