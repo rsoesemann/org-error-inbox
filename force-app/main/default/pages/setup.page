@@ -55,7 +55,6 @@
             <ul>
                 <li><a href="https://github.com/rsoesemann/app-setup/blob/master/LICENSE" target="_blank">rsoesemann/app-setup</a></li>
                 <li><a href="https://github.com/rsoesemann/apex-domainbuilder/blob/master/LICENSE" target="_blank">rsoesemann/apex-domainbuilder</a></li>
-                <li><a href="https://github.com/rsoesemann/apex-httpmock/blob/master/LICENSE" target="_blank">rsoesemann/apex-httpmock</a></li>
                 <li><a href="https://github.com/apexfarm/ApexTriggerHandler/blob/master/LICENSE" target="_blank">apexfarm/ApexTriggerHandler</a></li>
             </ul>
         </c:setupStep>

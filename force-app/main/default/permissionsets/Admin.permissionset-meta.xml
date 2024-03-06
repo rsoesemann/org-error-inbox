@@ -14,6 +14,11 @@
     </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
+        <field>OrgError__c.lkp_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>OrgError__c.txl_FullMailBody__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -34,11 +39,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>OrgError__c.txt_Method__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>OrgError__c.txt_ExceptionMessage__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -54,12 +54,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>OrgError__c.txt_Object__c</field>
+        <field>OrgError__c.txt_Method__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>OrgError__c.txt_Trigger__c</field>
+        <field>OrgError__c.txt_Object__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -74,12 +74,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>OrgError__c.txt_UserId__c</field>
+        <field>OrgError__c.txt_Trigger__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>OrgError__c.lkp_User__c</field>
+        <field>OrgError__c.txt_UserId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
