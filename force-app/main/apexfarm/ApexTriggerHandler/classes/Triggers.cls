@@ -55,7 +55,7 @@ public class Triggers {
     }
 
     @TestVisible
-    private static Manager prepare(TriggerOperation operationType, List<SObject> oldList, List<SObject> newList) {
+    private static Manager prepare(System.TriggerOperation operationType, List<SObject> oldList, List<SObject> newList) {
         Props props = new Props(operationType, oldList, newList);
         return new ManagerImpl(props);
     }
@@ -79,37 +79,37 @@ public class Triggers {
         }
 
         public Manager beforeInsert() {
-            canBind = this.props.operationType == TriggerOperation.BEFORE_INSERT;
+            canBind = this.props.operationType == System.TriggerOperation.BEFORE_INSERT;
             return this;
         }
 
         public Manager afterInsert() {
-            canBind = this.props.operationType == TriggerOperation.AFTER_INSERT;
+            canBind = this.props.operationType == System.TriggerOperation.AFTER_INSERT;
             return this;
         }
 
         public Manager beforeUpdate() {
-            canBind = this.props.operationType == TriggerOperation.BEFORE_UPDATE;
+            canBind = this.props.operationType == System.TriggerOperation.BEFORE_UPDATE;
             return this;
         }
 
         public Manager afterUpdate() {
-            canBind = this.props.operationType == TriggerOperation.AFTER_UPDATE;
+            canBind = this.props.operationType == System.TriggerOperation.AFTER_UPDATE;
             return this;
         }
 
         public Manager beforeDelete() {
-            canBind = this.props.operationType == TriggerOperation.BEFORE_DELETE;
+            canBind = this.props.operationType == System.TriggerOperation.BEFORE_DELETE;
             return this;
         }
 
         public Manager afterDelete() {
-            canBind = this.props.operationType == TriggerOperation.AFTER_DELETE;
+            canBind = this.props.operationType == System.TriggerOperation.AFTER_DELETE;
             return this;
         }
 
         public Manager afterUndelete() {
-            canBind = this.props.operationType == TriggerOperation.AFTER_UNDELETE;
+            canBind = this.props.operationType == System.TriggerOperation.AFTER_UNDELETE;
             return this;
         }
 
@@ -311,7 +311,7 @@ public class Triggers {
         @TestVisible
         public Map<Id, SObject> newMap { get; private set; }
         @TestVisible
-        public TriggerOperation operationType { get; private set; }
+        public System.TriggerOperation operationType { get; private set; }
         @TestVisible
         public Integer size { get; private set; }
 
@@ -338,7 +338,7 @@ public class Triggers {
         }
 
         @TestVisible
-        private Props(TriggerOperation operationType, List<SObject> oldList, List<SObject> newList) {
+        private Props(System.TriggerOperation operationType, List<SObject> oldList, List<SObject> newList) {
             this.isExecuting = true;
             this.operationType = operationType;
             this.isBefore = false;
@@ -539,11 +539,11 @@ public class Triggers {
 
     @TestVisible
     private class NullLoader implements Loader {
-        public List<Handler> load(SObjectType sObjectType, TriggerOperation triggerEvent) {
+        public List<Handler> load(SObjectType sObjectType, System.TriggerOperation triggerEvent) {
             return new List<Handler>();
         }
 
-        public List<Handler> load(SObjectType sObjectType, TriggerOperation triggerEvent, String tag) {
+        public List<Handler> load(SObjectType sObjectType, System.TriggerOperation triggerEvent, String tag) {
             return new List<Handler>();
         }
     }
@@ -551,8 +551,8 @@ public class Triggers {
     //===================
     // #region interfaces
     public interface Loader {
-        List<Handler> load(SObjectType sObjectType, TriggerOperation triggerEvent);
-        List<Handler> load(SObjectType sObjectType, TriggerOperation triggerEvent, String tag);
+        List<Handler> load(SObjectType sObjectType, System.TriggerOperation triggerEvent);
+        List<Handler> load(SObjectType sObjectType, System.TriggerOperation triggerEvent, String tag);
     }
 
     public interface Manager {

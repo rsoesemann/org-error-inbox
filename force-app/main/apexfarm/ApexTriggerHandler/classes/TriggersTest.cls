@@ -95,7 +95,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
         Triggers.Loader loader = Triggers.LOADER;
 
         Triggers.LOADER = new Triggers.NullLoader();
-        Triggers.prepare(TriggerOperation.BEFORE_INSERT, null, null)
+        Triggers.prepare(System.TriggerOperation.BEFORE_INSERT, null, null)
             .beforeInsert()
                 .load()
                 .load('tag1')
@@ -104,7 +104,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_Stop_BeforeInsert() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.BEFORE_INSERT, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.BEFORE_INSERT, null, null);
         triggerManager.beforeInsert()
             .bind(new FirstHandler())
             .bind(new MainHandler())
@@ -119,7 +119,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_Stop_AfterInsert() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.AFTER_INSERT, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.AFTER_INSERT, null, null);
         triggerManager.afterInsert()
             .bind(new FirstHandler())
             .bind(new MainHandler())
@@ -134,7 +134,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_Inactive_BeforeInsert() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.BEFORE_INSERT, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.BEFORE_INSERT, null, null);
         triggerManager.beforeInsert()
             .bind(new FirstHandler())
             .bind(new MainHandler())
@@ -148,7 +148,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_Skip_Remove() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.BEFORE_INSERT, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.BEFORE_INSERT, null, null);
         triggerManager.beforeInsert()
             .bind(new FirstHandler())
             .bind(new MainHandler())
@@ -164,7 +164,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_Skip_Clear() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.BEFORE_INSERT, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.BEFORE_INSERT, null, null);
         triggerManager
             .beforeInsert()
                 .bind(new FirstHandler())
@@ -186,7 +186,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
     @IsTest
     static void testBinding_State_BeforeInsert() {
         Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(
-            TriggerOperation.BEFORE_INSERT, new List<SObject>{}, new List<SObject>());
+            System.TriggerOperation.BEFORE_INSERT, new List<SObject>{}, new List<SObject>());
         triggerManager
             .beforeInsert()
                 .bind(new FirstHandler())
@@ -200,7 +200,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_State_AfterInsert() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.AFTER_INSERT, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.AFTER_INSERT, null, null);
         triggerManager
             .afterInsert()
                 .bind(new FirstHandler())
@@ -215,7 +215,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
     @IsTest
     static void testBinding_State_BeforeUpdate() {
         Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(
-            TriggerOperation.BEFORE_UPDATE, new List<SObject>(), new List<SObject>());
+            System.TriggerOperation.BEFORE_UPDATE, new List<SObject>(), new List<SObject>());
         triggerManager
             .beforeUpdate()
                 .bind(new FirstHandler())
@@ -230,7 +230,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
     @IsTest
     static void testBinding_State_AfterUpdate() {
         Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(
-            TriggerOperation.AFTER_UPDATE, new List<SObject> (), new List<SObject> ());
+            System.TriggerOperation.AFTER_UPDATE, new List<SObject> (), new List<SObject> ());
         triggerManager
             .afterUpdate()
                 .bind(new FirstHandler())
@@ -244,7 +244,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_State_BeforeDelete() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.BEFORE_DELETE, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.BEFORE_DELETE, null, null);
         triggerManager
             .beforeDelete()
                 .bind(new FirstHandler())
@@ -258,7 +258,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_State_AfterDelete() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.AFTER_DELETE, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.AFTER_DELETE, null, null);
         triggerManager
             .afterDelete()
                 .bind(new FirstHandler())
@@ -272,7 +272,7 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
 
     @IsTest
     static void testBinding_State_AfterUndelete() {
-        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(TriggerOperation.AFTER_UNDELETE, null, null);
+        Triggers.ManagerImpl triggerManager = (Triggers.ManagerImpl) Triggers.prepare(System.TriggerOperation.AFTER_UNDELETE, null, null);
         triggerManager
             .afterUndelete()
                 .bind(new FirstHandler())
@@ -296,37 +296,37 @@ public class TriggersTest implements Triggers.Handler, Triggers.BeforeInsert {
             new Account(Id = TriggersTest.getFakeId(Account.SObjectType, 2), Name = 'New Name 2'),
             new Account(Id = TriggersTest.getFakeId(Account.SObjectType, 3), Name = 'New Name 3')};
 
-        Triggers.prepare(TriggerOperation.BEFORE_INSERT, oldList, newList)
+        Triggers.prepare(System.TriggerOperation.BEFORE_INSERT, oldList, newList)
             .afterUpdate()
                 .bind(new AccountNameChangedHandler())
         .execute();
 
-        Triggers.prepare(TriggerOperation.AFTER_INSERT, oldList, newList)
+        Triggers.prepare(System.TriggerOperation.AFTER_INSERT, oldList, newList)
             .afterUpdate()
                 .bind(new AccountNameChangedHandler())
         .execute();
 
-        Triggers.prepare(TriggerOperation.BEFORE_UPDATE, oldList, newList)
+        Triggers.prepare(System.TriggerOperation.BEFORE_UPDATE, oldList, newList)
             .afterUpdate()
                 .bind(new AccountNameChangedHandler())
         .execute();
 
-        Triggers.prepare(TriggerOperation.AFTER_UPDATE, oldList, newList)
+        Triggers.prepare(System.TriggerOperation.AFTER_UPDATE, oldList, newList)
             .afterUpdate()
                 .bind(new AccountNameChangedHandler())
         .execute();
 
-        Triggers.prepare(TriggerOperation.BEFORE_DELETE, oldList, newList)
+        Triggers.prepare(System.TriggerOperation.BEFORE_DELETE, oldList, newList)
             .afterUpdate()
                 .bind(new AccountNameChangedHandler())
         .execute();
 
-        Triggers.prepare(TriggerOperation.AFTER_DELETE, oldList, newList)
+        Triggers.prepare(System.TriggerOperation.AFTER_DELETE, oldList, newList)
             .afterUpdate()
                 .bind(new AccountNameChangedHandler())
         .execute();
 
-        Triggers.prepare(TriggerOperation.AFTER_UNDELETE, oldList, newList)
+        Triggers.prepare(System.TriggerOperation.AFTER_UNDELETE, oldList, newList)
             .afterUpdate()
                 .bind(new AccountNameChangedHandler())
         .execute();
