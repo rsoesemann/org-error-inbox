@@ -6,7 +6,7 @@ Salesforce Orgs can send out notification emails when unhandled exceptions happe
 
 - **Custom Metadata** Tokenizer for flexible Email Parsing
 - Notify **Slack** Channel when email is received
-- [Explain errors and fixes using **OpenAI API** integration](https://youtu.be/dERb_22VSfI)
+- [Explain errors and fixes using **OpenAI API** integration](https://youtu.be/dERb_22VSfI) NOTE: OpenAI integration has been REMOVED from this branch
 - **Nice Dashboard** with Insights into your Errors
 
 **Video Demo:**

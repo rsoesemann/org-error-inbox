@@ -7,9 +7,6 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
-                            <value>OrgError__c.AddOpenAiHints</value>
-                        </valueListItems>
-                        <valueListItems>
                             <value>Delete</value>
                         </valueListItems>
                     </valueList>
@@ -288,20 +285,6 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.txl_Hints__c</fieldItem>
-                <identifier>Recordtxl_Hints_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-0e585a34-b3a9-4a53-97e7-0248d2c257bc</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
@@ -315,24 +298,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-f8d18d9f-97c6-44c3-b3b0-efdeaef83a06</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Hints (powered by OpenAI)</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentName>forceChatter:recordFeedContainer</componentName>

@@ -23,11 +23,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>OrgError__c.txl_Hints__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>OrgError__c.txl_Stacktrace__c</field>
         <readable>true</readable>
