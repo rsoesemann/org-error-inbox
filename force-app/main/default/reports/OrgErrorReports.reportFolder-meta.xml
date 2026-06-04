@@ -2,8 +2,8 @@
 <ReportFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>Manage</accessLevel>
-        <sharedTo>dmitry@inbox.scratch</sharedTo>
-        <sharedToType>User</sharedToType>
+        <sharedTo>Org_Error_Inbox_Admin</sharedTo>
+        <sharedToType>Group</sharedToType>
     </folderShares>
     <name>Org Error Reports</name>
 </ReportFolder>
