@@ -35,6 +35,8 @@ Deploy as source or install as Unlocked Package to your Production or Sandbox or
 
 [Recommended dashboard configuration](DASHBOARD.md)
 
+For government and highly-regulated industries, where AI usage may be restricted or disallowed, see [this fork of Org Error Inbox](https://github.com/billyJoePiano/org-error-inbox/).  All OpenAI integrations have been removed, but it otherwise retains core functionality.
+
 ## How can I contribute and extend it?
 
 The project was built as a flexible unnamespaced SFDX project. The repo contains all the scripts to automatically build dev scratch orgs and sample data to play with.
