@@ -31,7 +31,9 @@ Deploy as source or install as Unlocked Package to your Production or Sandbox or
 
 [Install Unlocked Package (Sandbox)](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tVI0000002n6HYAQ)
 
-<a href="DASHBOARD.md">A note about recommended dashboard configuration</a>
+### Notes ###
+
+[Recommended dashboard configuration](DASHBOARD.md)
 
 ## How can I contribute and extend it?
 
