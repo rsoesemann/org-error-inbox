@@ -15,7 +15,7 @@ private class ParseOrgErrors_Test {
 
 
         // Exercise
-        e.txl_FullMailBody__c = e.txl_FullMailBody__c.replaceAll('ACME.OpportunityService', 'ACME.LeadService');
+        e.txl_FullMailBody__c = e.txl_FullMailBody__c.replaceAll('Class.MyController', 'Class.ACME.LeadService');
         update e;
 
         
