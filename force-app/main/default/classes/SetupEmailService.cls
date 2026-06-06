@@ -103,7 +103,7 @@ public with sharing class SetupEmailService extends SetupStep {
     private void createOrActivateServiceAddress() {
         if(service == null) {
 
-            Id functionId = [SELECT Id FROM EmailServicesFunction WHERE FunctionName = :DEVELOPER_NAME].Id;
+            Id functionId = !Test.isRunningTest() ? [SELECT Id FROM EmailServicesFunction WHERE FunctionName = :DEVELOPER_NAME].Id : new Random().id(EmailServicesFunction.sObjectType);
             soapApi('create',
                 '<urn:type>EmailServicesAddress</urn:type>' +
                 '<urn:FunctionId>' + functionId + '</urn:FunctionId>' +

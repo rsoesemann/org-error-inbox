@@ -20,7 +20,7 @@ private class ParseOrgErrors_Test {
 
         
         // Verify
-        System.assertEquals('ACME.LeadService' , [SELECT txt_ApexClass__c FROM OrgError__c LIMIT 1].txt_ApexClass__c);
+        System.assertEquals('ACME.LeadService' , [SELECT txt_ApexClass__c FROM OrgError__c WHERE Id = :e.Id LIMIT 1].txt_ApexClass__c);
     }
 
 
