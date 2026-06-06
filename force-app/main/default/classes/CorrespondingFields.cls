@@ -33,10 +33,6 @@ public class CorrespondingFields {
 
 	
 	// PUBLIC
-	
-	public Set<SObjectField> targetFields(SObjectType sourceType) {
-		return (fieldMap.containsKey(sourceType)) ? fieldMap.get(sourceType).keySet() : new Set<SObjectField>();
-	}
 
 
 	public Set<SObjectField> targetFields() {
@@ -44,17 +40,6 @@ public class CorrespondingFields {
 		
 		for(Map<SObjectField, SObjectField> typeMap : fieldMap.values()) {
 			result.addAll(typeMap.keySet());
-		}
-		
-		return result;
-	}
-
-
-	public Set<SObjectField> sourceFields(SObjectType sourceType) {
-		Set<SObjectField> result = new Set<SObjectField>();
-		
-		if(fieldMap.containsKey(sourceType)) {
-			result.addAll(fieldMap.get(sourceType).values());
 		}
 		
 		return result;
@@ -74,17 +59,6 @@ public class CorrespondingFields {
 		}
 		
 		return null;
-	}
-
-
-	public Map<SObjectField, SObjectField> targetSourceMapping(SObjectType sourceType) {
-		Map<SObjectField, SObjectField> result = new Map<SObjectField, SObjectField>();
-		
-		if(fieldMap.containsKey(sourceType)) {
-			result.putAll(fieldMap.get(sourceType));
-		}
-		
-		return result;
 	}
 
 	
@@ -159,11 +133,6 @@ public class CorrespondingFields {
 
 	private String standard(String fieldName) {
 		return fieldName.removeEnd('__c');
-	}
-
-
-	private String ns(String prefix, String fieldName) {
-		return prefix + '__' + fieldName;
 	}
 
 

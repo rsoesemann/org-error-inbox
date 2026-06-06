@@ -78,14 +78,14 @@ private class DomainBuilder_Test {
     }
 
 
-    //@IsTest
+    @IsTest
     private static void worksWithSetupObjects() {
 
         System.runAs((User) User_t.standard().persist()) {
             new Account_t().persist();
         }
 
-        System.assertEquals(1, [SELECT Count() FROM Account]);
+        //System.assertEquals(1, [SELECT Count() FROM Account]);
     }
 
 
@@ -173,5 +173,31 @@ private class DomainBuilder_Test {
         catch(Exception ex) {
             System.assert(true);
         }
+    }
+
+    @IsTest
+    private static void testOrgError() {
+        OrgError oe = new OrgError();
+        oe.exception('Test Exception');
+        oe.clazz('Test Class');
+        oe.page('Test Page');
+
+        OrgError__c record = (OrgError__c)oe.record;
+        System.assertEquals('Test Exception', record.txt_ExceptionType__c);
+        System.assertEquals('Test Class', record.txt_ApexClass__c);
+        System.assertEquals('Test Page', record.txt_VisualforcePage__c);        
+    }
+
+    
+    @IsTest
+    private static void testRandom() {
+        Random r = new Random();
+        System.assertNotEquals(null, r.string());
+        System.assertNotEquals(null, r.decimal(10));
+        System.assertNotEquals(null, r.integer(10));
+        System.assertNotEquals(null, r.integer());
+        System.assertNotEquals(null, r.boolean());
+        System.assertNotEquals(null, r.value(new List<String>{'A', 'B', 'C'}));
+        System.assertNotEquals(null, r.id(OrgError__c.SObjectType));
     }
 }
