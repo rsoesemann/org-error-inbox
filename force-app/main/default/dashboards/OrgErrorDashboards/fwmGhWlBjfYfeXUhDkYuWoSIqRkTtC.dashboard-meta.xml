@@ -311,10 +311,8 @@
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
-    <dashboardType>SpecifiedUser</dashboardType>
+    <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>dmitry@inbox.scratch</owner>
-    <runningUser>dmitry@inbox.scratch</runningUser>
     <textColor>#000000</textColor>
     <title>Org Errors Overview</title>
     <titleColor>#000000</titleColor>
