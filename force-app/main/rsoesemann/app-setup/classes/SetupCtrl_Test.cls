@@ -28,6 +28,28 @@ private class SetupCtrl_Test {
     }
 
 
+    @IsTest
+    private static void testSetupPageCrtl() {
+        SetupPageCtrl ctrl = new SetupPageCtrl();
+        System.assertEquals(2, ctrl.steps().size());
+        System.assertNotEquals(null, ctrl.setupEmailService);
+        System.assertNotEquals(null, ctrl.setupReparse);
+        System.assertNotEquals(null, ctrl.setupSlack);
+    }
+
+
+    @IsTest
+    private static void testApplicationException() {
+        try {
+            new ApplicationException('Test Message').throwAuraHandled();
+            System.assert(false, 'Exception was expected');
+        }
+        catch (AuraHandledException ex) { 
+            System.assert(true, 'Exception was expected');
+        }
+    }
+
+
     // HELPER
 
     private class MySetupCtrl extends SetupCtrl {

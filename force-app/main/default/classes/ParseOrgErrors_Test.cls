@@ -15,12 +15,12 @@ private class ParseOrgErrors_Test {
 
 
         // Exercise
-        e.txl_FullMailBody__c = e.txl_FullMailBody__c.replaceAll('ACME.OpportunityService', 'ACME.LeadService');
+        e.txl_FullMailBody__c = e.txl_FullMailBody__c.replaceAll('Class.MyController', 'Class.ACME.LeadService');
         update e;
 
         
         // Verify
-        System.assertEquals('ACME.LeadService' , [SELECT txt_ApexClass__c FROM OrgError__c LIMIT 1].txt_ApexClass__c);
+        System.assertEquals('ACME.LeadService' , [SELECT txt_ApexClass__c FROM OrgError__c WHERE Id = :e.Id LIMIT 1].txt_ApexClass__c);
     }
 
 

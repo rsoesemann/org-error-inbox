@@ -2,11 +2,27 @@ public with sharing class SetupEmailService extends SetupStep {
 
     private static final String DEVELOPER_NAME = 'OrgErrorInbox';
     private Id classId = [SELECT Id FROM ApexClass WHERE Name = 'ErrorMailReceiver' LIMIT 1].Id;
+    
+    private final EmailServicesAddress mockService;
+    private final Boolean useMock;
+    
+    public SetupEmailService() {
+        this.useMock = false;
+    }
+    
+    @TestVisible
+    private SetupEmailService(EmailServicesAddress mockService) {
+        this.mockService = mockService;
+        this.useMock = true;
+    }
 
     // PUBLIC
 
     public EmailServicesAddress service { 
         get {
+            if (Test.isRunningTest() && this.useMock) {
+                return this.mockService;
+            }
             for(EmailServicesAddress service : [SELECT LocalPart, EmailDomainName, Function.IsActive, FunctionId FROM EmailServicesAddress
                                                 WHERE Function.FunctionName = :DEVELOPER_NAME AND Function.ApexClassId = :classId LIMIT 1]) {
                 this.service = service;
@@ -87,7 +103,7 @@ public with sharing class SetupEmailService extends SetupStep {
     private void createOrActivateServiceAddress() {
         if(service == null) {
 
-            Id functionId = [SELECT Id FROM EmailServicesFunction WHERE FunctionName = :DEVELOPER_NAME].Id;
+            Id functionId = !Test.isRunningTest() ? [SELECT Id FROM EmailServicesFunction WHERE FunctionName = :DEVELOPER_NAME].Id : new Random().id(EmailServicesFunction.sObjectType);
             soapApi('create',
                 '<urn:type>EmailServicesAddress</urn:type>' +
                 '<urn:FunctionId>' + functionId + '</urn:FunctionId>' +
@@ -125,8 +141,8 @@ public with sharing class SetupEmailService extends SetupStep {
         request.setBody('<?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:urn="urn:partner.soap.sforce.com" xmlns:urn1="urn:sobject.partner.soap.sforce.com">' +
                         '<env:Header><SessionHeader xmlns="urn:partner.soap.sforce.com"><sessionId>' + UserInfo.getSessionId() + '</sessionId></SessionHeader></env:Header>' +
                         '<env:Body><urn:' + operation + '><urn:sObjects>' + sobjectXml + '</urn:sObjects></urn:' + operation + '></env:Body></env:Envelope>');
-        
-                        HttpResponse response = new Http().send(request);
+
+        HttpResponse response = new Http().send(request);
         if(response.getStatusCode() != 200) {
             throw new ApplicationException(response.getBody());
         }
